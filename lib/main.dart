@@ -9,7 +9,7 @@ void main(){
         appBar: AppBar(
           title: const Center(child: Text("NanoClient"),),
         ),
-        body : const SwitchControlUI(),
+        body : SwitchControlUI(),
       )
     )
   );
