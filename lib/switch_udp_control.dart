@@ -1,6 +1,6 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:io';
 
 class SwitchCotrolCode {
@@ -26,7 +26,6 @@ class SwitchCotrolCode {
   }
   
 }
-
 // ignore: must_be_immutable
 class SwitchControlUI extends StatelessWidget {
   SwitchControlUI({ Key? key }) : super(key: key);
@@ -47,21 +46,21 @@ class SwitchControlUI extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     startListening();
-    final Size size = MediaQuery.of(context).size;  
+    ScreenUtil.init( context, designSize:const Size(360,640));
     return Container(
-      padding: EdgeInsets.fromLTRB(0,  size.height/4, 0, 0),
+      padding: EdgeInsets.fromLTRB(0, ScreenUtil().setHeight(130), 0, 0),
       alignment: Alignment.center,
       child: Column(   
         children: [
           SizedBox(  // turn on light
-            height: 90,
-            width: 150,
+            height: ScreenUtil().setHeight(90),
+            width: ScreenUtil().setWidth(150),
             child: ElevatedButton.icon(onPressed: (){sendMessage(SwitchCotrolCode.getOnCode());},icon: const Icon(Icons.light),label: const Text("on")),
           ),
           Container( // turn off light
-            margin: const EdgeInsets.fromLTRB(0, 80, 0, 0),
-            height: 90,
-            width: 150,
+            margin: EdgeInsets.fromLTRB(0, ScreenUtil().setHeight(80), 0, 0),
+            height: ScreenUtil().setHeight(90),
+            width: ScreenUtil().setWidth(150),
             child: ElevatedButton.icon(onPressed: (){sendMessage(SwitchCotrolCode.getOffCode());},icon: const Icon(Icons.bedtime),label: const Text("off")),
           ),
       ],
