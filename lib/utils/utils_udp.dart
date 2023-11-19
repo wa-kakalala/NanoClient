@@ -8,7 +8,7 @@ class UtilsUdp {
     addressIp = ip;
     addressPort = port;
   }
-  RawDatagramSocket? _socket; //? _socket可以为空  dart强制执行null检查 192.168.37.75
+  RawDatagramSocket? _socket; //? _socket可以为空  dart强制执行null检查 192.168.31.75
   void startListening() async {  
     _socket = await RawDatagramSocket.bind("0.0.0.0", 7777);
   }
