@@ -38,7 +38,7 @@ class DoorControl extends StatelessWidget {
             margin: EdgeInsets.fromLTRB(0, ScreenUtil().setHeight(80), 0, 0),
             height: ScreenUtil().setHeight(90),
             width: ScreenUtil().setWidth(150),
-            child: ElevatedButton.icon(onPressed: (){udpInst.sendMessage(LightCotrolCode.getOffCode());},icon: const Icon(Icons.bedtime),label: const Text("sensor_door")),
+            child: ElevatedButton.icon(onPressed: (){udpInst.sendMessage(LightCotrolCode.getOffCode());},icon: const Icon(Icons.sensor_door),label: const Text("OpenDoor")),
           ),
       ],
       ),
