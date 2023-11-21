@@ -24,7 +24,7 @@ class LightCotrolCode {
 }
 
 class LigheControl extends StatelessWidget {
-  final UtilsUdp udpInst;
+  final UtilsUdp udpInst ;
   const LigheControl({ super.key, required this.udpInst});
   @override
   Widget build(BuildContext context){

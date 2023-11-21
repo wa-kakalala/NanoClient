@@ -6,22 +6,24 @@ import 'pages/config_json_control.dart';
 //import 'package:path_provider/path_provider.dart';
 
 // ignore: must_be_immutable
-class Tabs extends StatefulWidget{
-  const Tabs ({super.key});
+class PageTabs extends StatefulWidget{
+  const PageTabs ({super.key});
   @override
   // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() => _TabsState();
 }
 
-class _TabsState extends State<Tabs> {
+class _TabsState extends State<PageTabs> {
   int _currentIndex = 0;
-  UtilsUdp udpInst = UtilsUdp("192.168.31.75",6666); 
+  UtilsUdp udpInst = UtilsUdp("192.168.31.75",6666);
+  
   @override
   Widget build(BuildContext context) {
     udpInst = UtilsUdp("192.168.31.75",6666);
+    udpInst.startListening();
     List<Widget> pages = [
-      LigheControl(udpInst: udpInst),
-      DoorControl(udpInst: udpInst),
+      LigheControl(udpInst: udpInst,),
+      DoorControl(udpInst: udpInst,),
       const ConfigControl(),
     ];
     

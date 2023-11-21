@@ -24,8 +24,8 @@ class LightCotrolCode {
 }
 
 class DoorControl extends StatelessWidget {
-  final UtilsUdp udpInst;
-  const DoorControl({ super.key, required this.udpInst});
+  final UtilsUdp udpInst ;
+  const DoorControl({super.key,required this.udpInst});
   @override
   Widget build(BuildContext context){
     ScreenUtil.init( context, designSize:const Size(360,640));

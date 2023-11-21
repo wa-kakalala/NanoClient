@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import './tabs.dart';
+import 'pagetabs.dart';
 
 void main(){
   runApp(
-      const Tabs(),
+      const PageTabs(),
   );
 }
 
