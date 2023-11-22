@@ -28,7 +28,7 @@ class _ConfigControlState extends State<ConfigControl> {
       "ipAddress": ipController.text,
       "portAddress": portController.text,
     };
-    await file.writeAsString('{"ipAddress":"${address['ipAddress']}","portAddress":"${address['portAddress']}"}');
+    await file.writeAsString('{"ipAddress":"${address["ipAddress"]}","portAddress":"${address["portAddress"]}"}');
   }
 
   void setAddress() async {

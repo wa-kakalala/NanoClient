@@ -18,8 +18,8 @@ class PageTabs extends StatefulWidget{
 class _TabsState extends State<PageTabs> {
   int _currentIndex = 0;
   UtilsUdp udpInst = UtilsUdp("192.168.31.75",6666);
-  String ipAddress = '';
-  String portAddress = '';
+  String ipAddress = '192.168.31.75';
+  String portAddress = '6666';
 
 
   void getAddress() async {
@@ -30,7 +30,7 @@ class _TabsState extends State<PageTabs> {
     File file = File(path);
     if( !file.existsSync()){
       ipAddress ="192.168.31.75";
-      portAddress = '6666';
+      portAddress = "6666";
       return;
     }
 
