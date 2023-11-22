@@ -3,7 +3,9 @@ import 'pages/light_udp_control.dart';
 import 'utils/utils_udp.dart';
 import 'pages/door_ble_control.dart';
 import 'pages/config_json_control.dart';
-//import 'package:path_provider/path_provider.dart';
+import 'dart:io';
+import 'dart:convert' as convert;
+import 'package:path_provider/path_provider.dart';
 
 // ignore: must_be_immutable
 class PageTabs extends StatefulWidget{
@@ -16,10 +18,32 @@ class PageTabs extends StatefulWidget{
 class _TabsState extends State<PageTabs> {
   int _currentIndex = 0;
   UtilsUdp udpInst = UtilsUdp("192.168.31.75",6666);
+  String ipAddress = '';
+  String portAddress = '';
+
+
+  void getAddress() async {
+    // 获取应用程序目录
+    Directory  appDocumentDirectory = await getApplicationDocumentsDirectory();
+    // 路径
+    String path = '${appDocumentDirectory.path}${Platform.pathSeparator}NanoClient${Platform.pathSeparator}config.json';
+    File file = File(path);
+    if( !file.existsSync()){
+      ipAddress ="192.168.31.75";
+      portAddress = '6666';
+      return;
+    }
+
+    var jsonString = await file.readAsString();
+    Map<String, dynamic> address = convert.jsonDecode(jsonString);
+    ipAddress = address['ipAddress'].toString();
+    portAddress = address['portAddress'].toString();
+  }
   
   @override
   Widget build(BuildContext context) {
-    udpInst = UtilsUdp("192.168.31.75",6666);
+    getAddress();
+    udpInst = UtilsUdp(ipAddress,int.parse(portAddress));
     udpInst.startListening();
     List<Widget> pages = [
       LigheControl(udpInst: udpInst,),
